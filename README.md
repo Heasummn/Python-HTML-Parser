@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Heasummn/Python-HTML-Parser.png?label=ready&title=Ready)](https://waffle.io/Heasummn/Python-HTML-Parser)
 # Python-HTML-Parser
 An attempt at learning by making a parser for HTML, in Python.
 
