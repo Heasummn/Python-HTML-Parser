@@ -28,7 +28,7 @@ class Tag(object):
         :return: None
         """
         if not isinstance(child, Tag):
-            raise TypeError("Expected Tag object, got {0} of type {1}"
+            raise ValueError("Expected Tag object, got {0} of type {1}"
                              .format(child, type(child)))
         child.set_parent(self)
         self.children.append(child)
@@ -40,6 +40,6 @@ class Tag(object):
         :return: None
         """
         if not isinstance(parent, Tag):
-            raise TypeError("Expected Tag object, got {0} of type {1}"
+            raise ValueError("Expected Tag object, got {0} of type {1}"
                              .format(parent, type(parent)))
         self.parent = parent
