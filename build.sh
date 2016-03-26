@@ -5,28 +5,39 @@ generate_docs() {
     if [ "$cont" = "y" ]
     then
         install_modules
-    else if [ "$cont" != "n" ]
+    elif [ "$cont" != "n" ]
     then
         printf "Unkown command, assumming yes"
         install_modules
+    fi
+
+    {
+        command sphinx-apidoc -f -o docs HTML_Parser
+    } || {
+        printf "running apidoc failed\n"
+        printf "Please assert that modules have been installed already\n\n"
+    }
+
     {
         cd docs
         printf "generating docs\n"
-        command make $1 %%
+        command make $1
     } || { # Executed on failure
         printf "Making documentation failed\n"
         printf "Could it be an unsupported form of documentation?\n"
-        printf "Please assert that modules have been installed already\n"
+        printf "Please assert that modules have been installed already\n\n"
         cd ..
         read -p "Install modules?[y/n]: " cont
+        printf "\n"
+
         if [ "$cont" = "y" ]
         then
             install_modules
-        else if [ "$cont" != "n" ]
+        elif [ "$cont" != "n" ]
         then
             printf "Unkown command, assumming yes"
             install_modules
-
+        fi
     }
 }
 
@@ -34,7 +45,7 @@ install_modules() {
     {
         printf "installing modules\n"
         command pip3 install -r requirements.txt
-    } ||  # Executed on failure
+    } || {  # Executed on failure
         printf Installation of required modules failed.
         printf Make sure pip3 and python3 are installed.
     }
@@ -67,6 +78,7 @@ then
     else
         printf "Unkown command\n"
         print_help
+    fi
 
     printf "Setup completed\n"
 else
