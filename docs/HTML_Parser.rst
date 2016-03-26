@@ -12,6 +12,14 @@ HTML_Parser.tag module
     :undoc-members:
     :show-inheritance:
 
+HTML_Parser.test module
+-----------------------
+
+.. automodule:: HTML_Parser.test
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

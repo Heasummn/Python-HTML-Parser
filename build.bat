@@ -40,10 +40,20 @@ if "!contMod!" == "y" (
     goto Modules
 )
 
-cd docs
 echo Generating docs
+
+call sphinx-apidoc -f -o docs HTML_Parser && (
+    echo.
+) || (
+    echo Running apidoc failed
+    echo Please assert that modules have been installed already
+    echo.
+)
+
+cd docs
 echo.
 call make clean :: To avoid random errors
+
 call make !target! && ( :: Executed on success
     echo.
     cd ..
