@@ -2,6 +2,9 @@
 Module contaning the Tag class.
 """
 
+from utils import correct_type
+
+
 class Tag(object):
     """
     A HTML tag object. Contains tag name, parent tag and child tags.
@@ -20,16 +23,13 @@ class Tag(object):
         if self.parent is not None:
             parent.add_child(self)
 
-
     def add_child(self, child):
         """Adds child tag to children list
 
         :param child: child Tag object
         :return: None
         """
-        if not isinstance(child, Tag):
-            raise ValueError("Expected Tag object, got {0} of type {1}"
-                             .format(child, type(child)))
+        correct_type(child, Tag)
         child.set_parent(self)
         self.children.append(child)
 
@@ -39,7 +39,5 @@ class Tag(object):
         :param parent: parent Tag object
         :return: None
         """
-        if not isinstance(parent, Tag):
-            raise ValueError("Expected Tag object, got {0} of type {1}"
-                             .format(parent, type(parent)))
+        correct_type(parent, Tag)
         self.parent = parent
