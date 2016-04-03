@@ -20,6 +20,7 @@ class Tag(object):
         self.name = name
         self.children = []
         self.parent = parent
+        self.is_closed = False
         if self.parent is not None:
             parent.add_child(self)
 
@@ -41,3 +42,11 @@ class Tag(object):
         """
         correct_type(parent, Tag)
         self.parent = parent
+
+    def set_closed(self, closed):
+        """
+        Set's whether or not the Tag has been closed
+        :param closed: Whether or not the tag is closed
+        :return: None
+        """
+        self.is_closed = closed

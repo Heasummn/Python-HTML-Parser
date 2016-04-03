@@ -17,9 +17,7 @@ class Dom(object):
         :param root: Root Tag of the HTML tag tree. Usually the <html> element.
         :return: None
         """
-        self.root = root
-        if self.root is not None:
-            correct_type(root, Tag)
+        self.set_root(root)
 
     def get_tags(self, root, recursive=True):
         """
@@ -36,3 +34,13 @@ class Dom(object):
             if recursive:
                 tags += self.get_tags(child)
         return tags
+
+    def set_root(self, root):
+        """
+        Sets the root of the Dom
+        :param root: Root Tag of the HTML tag tree. Usually the <html> element.
+        :return: None
+        """
+        self.root = root
+        if self.root is not None:
+            correct_type(root, Tag)
