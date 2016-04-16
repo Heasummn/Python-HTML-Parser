@@ -29,8 +29,6 @@ class Dom(object):
         tags = []
         for child in root.children:
             tags.append(child)
-            print("got here")
-            print(len(tags))
             if recursive:
                 tags += self.get_tags(child)
         return tags
